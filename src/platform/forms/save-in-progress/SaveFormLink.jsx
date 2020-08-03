@@ -41,8 +41,9 @@ class SaveFormLink extends React.Component {
   render() {
     if (!this.props.user.login.currentlyLoggedIn) return null;
     const { savedStatus } = this.props.form;
-    const { formConfig } = this.props;
-    const appType = formConfig?.customText?.appType || APP_TYPE_DEFAULT;
+    const {
+      formConfig: { customText: { appType = APP_TYPE_DEFAULT } = {} } = {},
+    } = this.props;
 
     return (
       <div className={this.props.children ? 'vads-u-display--inline' : ''}>

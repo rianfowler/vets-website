@@ -80,9 +80,6 @@ describe('schemaform <ApplicationStatus>', () => {
     );
 
     expect(tree.subTree('.usa-alert-info')).to.not.be.false;
-    expect(tree.subTree('.usa-button-primary').text()).to.equal(
-      'Continue your application',
-    );
     expect(tree.subTree('.form-title').text()).to.contain(
       'Your application is in progress',
     );
@@ -113,9 +110,7 @@ describe('schemaform <ApplicationStatus>', () => {
       />,
     );
     expect(tree.subTree('.usa-alert-warning')).to.not.be.false;
-    expect(tree.subTree('.usa-button-primary').text()).to.equal(
-      'Start a new application',
-    );
+    expect(tree.text()).to.include('start a new application');
   });
   it('should render saved form from ids', () => {
     const tree = SkinDeep.shallowRender(
@@ -142,11 +137,7 @@ describe('schemaform <ApplicationStatus>', () => {
         formConfig={formConfigDefaultData}
       />,
     );
-
     expect(tree.subTree('.usa-alert-info')).to.not.be.false;
-    expect(tree.subTree('.usa-button-primary').text()).to.equal(
-      'Continue your application',
-    );
     expect(tree.subTree('.form-title').text()).to.contain(
       'Your application is in progress',
     );

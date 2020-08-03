@@ -69,14 +69,16 @@ class FormStartControls extends React.Component {
 
   render() {
     // get access to the formConfig object through this route
-    const { formConfig } = this.props.routes[1];
-    const startNewAppButtonText =
-      formConfig?.customText?.startNewAppButtonText ||
-      START_NEW_APP_DEFAULT_MESSAGE;
-    const continueAppButtonText =
-      formConfig?.customText?.continueAppButtonText ||
-      CONTINUE_APP_DEFAULT_MESSAGE;
-    const appType = formConfig?.customText?.appType || APP_TYPE_DEFAULT;
+    const {
+      formConfig: {
+        customText: {
+          startNewAppButtonText = START_NEW_APP_DEFAULT_MESSAGE,
+          continueAppButtonText = CONTINUE_APP_DEFAULT_MESSAGE,
+          appType = APP_TYPE_DEFAULT,
+        } = {},
+      } = {},
+    } = this.props.routes[1];
+
     if (this.props.formSaved) {
       return (
         <div>

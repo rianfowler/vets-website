@@ -6,10 +6,10 @@ import { APP_TYPE_DEFAULT } from '../../forms-system/src/js/constants';
 export default function DowntimeMessage({
   downtime,
   isAfterSteps,
-  formConfig,
+  formConfig = {},
 }) {
   const endTime = downtime.endTime;
-  const { appType } = formConfig?.customText?.appType || APP_TYPE_DEFAULT;
+  const { customText: { appType = APP_TYPE_DEFAULT } = {} } = formConfig;
   return (
     <AlertBox
       className={classNames({

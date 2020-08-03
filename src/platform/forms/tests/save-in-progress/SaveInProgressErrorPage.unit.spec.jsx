@@ -22,11 +22,7 @@ describe('<SaveInProgressErrorPage>', () => {
   let formConfigDefaultData;
   beforeEach(() => {
     setup();
-    formConfigDefaultData = {
-      customText: {
-        continueAppButtonText: '',
-      },
-    };
+    formConfigDefaultData = {};
   });
   afterEach(teardown);
 
@@ -110,9 +106,6 @@ describe('<SaveInProgressErrorPage>', () => {
     expect(
       findDOM.querySelector('.usa-button-secondary').textContent,
     ).to.contain('Back');
-    expect(findDOM.querySelector('.usa-button-primary').textContent).to.contain(
-      'Continue your application',
-    );
   });
   it('should render the forbidden failure error', () => {
     const tree = ReactTestUtils.renderIntoDocument(

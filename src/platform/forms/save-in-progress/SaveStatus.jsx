@@ -10,7 +10,7 @@ import {
 
 function SaveStatus({
   form: { lastSavedDate, autoSavedStatus },
-  formConfig,
+  formConfig = {},
   isLoggedIn,
   showLoginModal,
   toggleLoginModal,
@@ -30,15 +30,19 @@ function SaveStatus({
     ((autoSavedStatus === SAVE_STATUSES.noAuth && !isLoggedIn) ||
       autoSavedStatus !== SAVE_STATUSES.noAuth);
 
-  const { appType } = formConfig?.customText || APP_TYPE_DEFAULT;
+  const {
+    customText: {
+      appType = APP_TYPE_DEFAULT,
+      appSavedSuccessfullyMessage = APP_SAVED_SUCCESSFULLY_DEFAULT_MESSAGE,
+    } = {},
+  } = formConfig;
 
   return (
     <div>
       {autoSavedStatus === SAVE_STATUSES.success && (
         <div className="panel saved-success-container">
           <i className="fa fa-check-circle saved-success-icon" />
-          {formConfig?.customText?.appSavedSuccessfullyMessage ||
-            APP_SAVED_SUCCESSFULLY_DEFAULT_MESSAGE}
+          {appSavedSuccessfullyMessage}
           {savedAtMessage}
         </div>
       )}

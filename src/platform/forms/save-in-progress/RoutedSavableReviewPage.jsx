@@ -64,12 +64,19 @@ class RoutedSavableReviewPage extends React.Component {
   };
 
   renderErrorMessage = () => {
-    const { route, user, form, location, showLoginModal } = this.props;
-    const errorText = route.formConfig.errorText;
+    const {
+      route,
+      formConfig: {
+        customText: { appType = APP_TYPE_DEFAULT } = {},
+        errorText,
+        submissionError: CustomSubmissionError,
+      } = {},
+      user,
+      form,
+      location,
+      showLoginModal,
+    } = this.props;
     const savedStatus = form.savedStatus;
-    const { appType } = route?.formConfig?.customText || APP_TYPE_DEFAULT;
-    const CustomSubmissionError = route.formConfig?.submissionError;
-
     const saveLink = (
       <SaveFormLink
         locationPathname={location.pathname}
@@ -148,16 +155,19 @@ class RoutedSavableReviewPage extends React.Component {
   render() {
     const {
       form,
-      formConfig,
+      formConfig = {},
+      formConfig: {
+        customText: {
+          finishAppLaterMessage = FINISH_APP_LATER_DEFAULT_MESSAGE,
+        } = {},
+      },
       formContext,
       location,
       pageList,
       path,
       user,
     } = this.props;
-    const finishAppLaterMessage =
-      formConfig?.customText?.finishAppLaterMessage ||
-      FINISH_APP_LATER_DEFAULT_MESSAGE;
+
     const downtimeDependencies = get('downtime.dependencies', formConfig) || [];
     return (
       <div>

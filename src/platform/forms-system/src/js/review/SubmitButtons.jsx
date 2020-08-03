@@ -13,9 +13,8 @@ export default function SubmitButtons(props) {
     preSubmitSection,
     renderErrorMessage,
     submission,
-    formConfig,
+    formConfig: { customText: { appType = APP_TYPE_DEFAULT } = {} } = {},
   } = props;
-  const appType = formConfig?.customText?.appType || APP_TYPE_DEFAULT;
   let submitButton;
   let submitMessage;
   if (submission.status === false) {
@@ -190,4 +189,9 @@ SubmitButtons.propTypes = {
   preSubmitSection: PropTypes.element,
   renderErrorMessage: PropTypes.func,
   submission: PropTypes.object,
+  formConfig: PropTypes.shape({
+    customText: PropTypes.shape({
+      appType: PropTypes.string,
+    }),
+  }),
 };

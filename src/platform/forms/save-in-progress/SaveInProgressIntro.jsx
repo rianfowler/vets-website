@@ -37,14 +37,18 @@ class SaveInProgressIntro extends React.Component {
       verifyRequiredPrefill,
       verifiedPrefillAlert,
       unverifiedPrefillAlert,
-      formConfig,
+      formConfig: {
+        customText: {
+          appType = APP_TYPE_DEFAULT,
+          appAction = APP_ACTION_DEFAULT,
+        } = {},
+      } = {},
     } = this.props;
     const { profile, login } = this.props.user;
     const prefillAvailable = !!(
       profile && profile.prefillsAvailable.includes(formId)
     );
-    const appType = formConfig?.customText?.appType || APP_TYPE_DEFAULT;
-    const appAction = formConfig?.customText?.appAction || APP_ACTION_DEFAULT;
+
     if (login.currentlyLoggedIn) {
       if (savedForm) {
         const lastUpdated =
@@ -254,9 +258,10 @@ class SaveInProgressIntro extends React.Component {
   };
 
   render() {
+    const {
+      formConfig: { customText: { appType = APP_TYPE_DEFAULT } = {} } = {},
+    } = this.props;
     const { profile } = this.props.user;
-    const { formConfig } = this.props;
-    const appType = formConfig.customText?.appType || APP_TYPE_DEFAULT;
     const startPage = this.getStartPage();
     const savedForm =
       profile && profile.savedForms.find(f => f.form === this.props.formId);
