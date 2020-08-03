@@ -157,9 +157,10 @@ class RoutedSavableApp extends React.Component {
     const {
       currentLocation,
       autoSavedStatus,
-      formConfig,
-      formConfig: { additionalRoutes = [], customText = {} },
-      customText: { appType = APP_TYPE_DEFAULT },
+      formConfig: {
+        additionalRoutes = [],
+        customText: { appType = APP_TYPE_DEFAULT } = {},
+      },
     } = this.props;
     const trimmedPathname = currentLocation.pathname.replace(/\/$/, '');
     const additionalSafePaths = additionalRoutes.map(route => route.path);
