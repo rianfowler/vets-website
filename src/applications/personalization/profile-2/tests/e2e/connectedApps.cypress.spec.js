@@ -35,6 +35,7 @@ function disconnectApps(mobile = false) {
   cy.findByTestId('disconnect-app-0oa3s6dlvxgsZr62p2p7').click();
   // Click in disconnect in the confirmation modal
   cy.findByTestId('confirm-disconnect').click();
+  cy.route('DELETE', 'v0/profile/connected_applications/0oa3s6dlvxgsZr62p2p7');
   cy.findByText(/processing update.../i).should('exist');
 
   // Check for the presence of the disconnect success alert
@@ -53,6 +54,7 @@ function disconnectApps(mobile = false) {
 
   // Click in disconnect in the confirmation modal
   cy.findByTestId('confirm-disconnect').click();
+  cy.route('DELETE', 'v0/profile/connected_applications/10oa3s6dlvxgsZr62p2p7');
   cy.findByText(/processing update.../i).should('exist');
 
   // Check for the presence of 2 disconnect success alerts
