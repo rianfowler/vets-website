@@ -34,7 +34,9 @@ function disconnectApps(mobile = false) {
   // Click on the disconnect button of the first app
   cy.findByTestId('disconnect-app-0oa3s6dlvxgsZr62p2p7').click();
   // Click in disconnect in the confirmation modal
-  cy.findByTestId('confirm-disconnect-Apple Health').click();
+  cy.findByTestId('confirm-disconnect-Apple Health').click({
+    force: true,
+  });
   cy.route('DELETE', 'v0/profile/connected_applications/0oa3s6dlvxgsZr62p2p7');
   cy.findByText(/processing update.../i).should('exist');
 
@@ -53,7 +55,9 @@ function disconnectApps(mobile = false) {
   });
 
   // Click in disconnect in the confirmation modal
-  cy.findByTestId('confirm-disconnect-Test App 2').click();
+  cy.findByTestId('confirm-disconnect-Test App 2').click({
+    force: true,
+  });
   cy.route('DELETE', 'v0/profile/connected_applications/10oa3s6dlvxgsZr62p2p7');
   cy.findByText(/processing update.../i).should('exist');
 
