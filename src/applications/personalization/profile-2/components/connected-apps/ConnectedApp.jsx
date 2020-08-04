@@ -51,6 +51,7 @@ export class ConnectedApp extends Component {
               aria-label={`Disconnect ${title} from your account`}
               className="usa-button-secondary vads-u-margin-bottom--3 medium-screen:vads-u-margin-bottom--0"
               onClick={this.openModal}
+              data-testid={`disconnect-app-${this.props.id}`}
             >
               Disconnect
             </button>
