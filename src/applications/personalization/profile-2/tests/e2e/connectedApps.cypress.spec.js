@@ -47,7 +47,9 @@ function disconnectApps(mobile = false) {
 
   // One of the two apps should now be removed
   cy.get('.connected-app').should('have.length', 1);
-  cy.findByTestId('disconnect-app-10oa3s6dlvxgsZr62p2p7').click({ force: true });
+  cy.findByTestId('disconnect-app-10oa3s6dlvxgsZr62p2p7').click({
+    force: true,
+  });
 
   // Click in disconnect in the confirmation modal
   cy.findByTestId('confirm-disconnect').click();
