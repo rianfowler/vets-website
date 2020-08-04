@@ -6,7 +6,7 @@ export const facilityData = (facility, service) => {
       data: [
         {
           id: 'ccp_1013055938', // cc_pharmacy
-          type: 'cc_provider',
+          type: 'provider',
           attributes: {
             // eslint-disable-next-line camelcase
             unique_id: '1013055938',
@@ -267,7 +267,7 @@ export const facilityData = (facility, service) => {
         data: [
           {
             id: 'ccp_1790275410', // cc_urgent_care
-            type: 'cc_provider',
+            type: 'provider',
             attributes: {
               // eslint-disable-next-line camelcase
               unique_id: '1790275410',

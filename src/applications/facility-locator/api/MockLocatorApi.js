@@ -32,7 +32,7 @@ class MockLocatorApi {
     page,
   ) {
     const data = facilityData(locationType, serviceType);
-    const filterableLocations = ['health', 'benefits', 'cc_provider'];
+    const filterableLocations = ['health', 'benefits', 'provider'];
     const params = compact([
       address ? `address=${address}` : null,
       ...bounds.map(c => `bbox[]=${c}`),

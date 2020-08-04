@@ -889,7 +889,7 @@
     },
     {
       "id": "ccp_1",
-      "type": "cc_provider",
+      "type": "provider",
       "attributes": {
         "uniqueId": "1",
         "name": "Smith, Jones MD",
@@ -924,7 +924,7 @@
     },
     {
       "id": "ccp_2",
-      "type": "cc_provider",
+      "type": "provider",
       "attributes": {
         "uniqueId": "2",
         "name": "Franklin Street Dentist",
@@ -962,7 +962,7 @@
     },
     {
       "id": "ccp_3",
-      "type": "cc_provider",
+      "type": "provider",
       "attributes": {
         "uniqueId": "3",
         "name": "University of Maryland Clinic",
@@ -1000,7 +1000,7 @@
     },
     {
       "id": "ccp_4",
-      "type": "cc_provider",
+      "type": "provider",
       "attributes": {
         "uniqueId": "4",
         "name": "University of Broken Data",
