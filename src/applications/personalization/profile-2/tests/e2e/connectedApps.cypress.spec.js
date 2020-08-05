@@ -84,6 +84,7 @@ describe('Connected applications', () => {
     cy.login(mockUser);
     // login() calls cy.server() so we can now mock routes
     cy.route('GET', '/v0/feature_toggles*', mockFeatureToggles);
+    window.VetsGov = { test: true };
   });
   it('should successfully disconnect apps on Desktop', () => {
     disconnectApps(false);
