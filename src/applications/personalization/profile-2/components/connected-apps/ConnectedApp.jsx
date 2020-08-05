@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { isEmpty } from 'lodash';
 import moment from 'moment';
 
 import PropTypes from 'prop-types';
@@ -60,7 +61,7 @@ export class ConnectedApp extends Component {
           <ConnectedAppDeleteModal
             deleting={this.props.deleting}
             title={title}
-            modalOpen={this.state.modalOpen}
+            modalOpen={this.state.modalOpen && isEmpty(this.props.errors)}
             closeModal={this.closeModal}
             confirmDelete={this.confirmDelete}
           />
@@ -84,6 +85,7 @@ ConnectedApp.propTypes = {
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   deleting: PropTypes.bool,
+  errors: PropTypes.array,
   attributes: PropTypes.shape({
     title: PropTypes.string.isRequired,
     logo: PropTypes.string.isRequired,
