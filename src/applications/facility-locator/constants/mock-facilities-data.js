@@ -1,11 +1,11 @@
 import data from '../constants/mock-facility-data.json';
 
 export const facilityData = (facility, service) => {
-  if (facility === 'cc_pharmacy') {
+  if (facility === 'pharmacy') {
     return {
       data: [
         {
-          id: 'ccp_1013055938', // cc_pharmacy
+          id: 'ccp_1013055938', // pharmacy
           type: 'provider',
           attributes: {
             // eslint-disable-next-line camelcase
