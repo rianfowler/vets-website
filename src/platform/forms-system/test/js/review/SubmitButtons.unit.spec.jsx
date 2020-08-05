@@ -7,9 +7,7 @@ import SubmitButtons from '../../../src/js/review/SubmitButtons';
 describe('Schemaform review: <SubmitButtons>', () => {
   let formConfig;
   beforeEach(() => {
-    formConfig = {
-      customText: {},
-    };
+    formConfig = {};
   });
   it('should render', () => {
     const submission = {
