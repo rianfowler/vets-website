@@ -10,7 +10,7 @@ import {
 
 function SaveStatus({
   form: { lastSavedDate, autoSavedStatus },
-  formConfig = {},
+  formConfig,
   isLoggedIn,
   showLoginModal,
   toggleLoginModal,
