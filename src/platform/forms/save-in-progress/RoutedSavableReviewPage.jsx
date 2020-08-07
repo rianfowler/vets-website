@@ -66,17 +66,16 @@ class RoutedSavableReviewPage extends React.Component {
   renderErrorMessage = () => {
     const {
       route,
-      formConfig: {
-        customText: { appType = APP_TYPE_DEFAULT } = {},
-        errorText,
-        submissionError: CustomSubmissionError,
-      } = {},
+      formConfig,
       user,
       form,
       location,
       showLoginModal,
     } = this.props;
     const savedStatus = form.savedStatus;
+    const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
+    const CustomSubmissionError = formConfig?.submissionError;
+    const errorText = formConfig?.errorText;
     const saveLink = (
       <SaveFormLink
         locationPathname={location.pathname}

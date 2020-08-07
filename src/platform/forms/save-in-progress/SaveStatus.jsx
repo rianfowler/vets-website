@@ -30,12 +30,10 @@ function SaveStatus({
     ((autoSavedStatus === SAVE_STATUSES.noAuth && !isLoggedIn) ||
       autoSavedStatus !== SAVE_STATUSES.noAuth);
 
-  const {
-    customText: {
-      appType = APP_TYPE_DEFAULT,
-      appSavedSuccessfullyMessage = APP_SAVED_SUCCESSFULLY_DEFAULT_MESSAGE,
-    } = {},
-  } = formConfig;
+  const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
+  const appSavedSuccessfullyMessage =
+    formConfig?.customText?.appSavedSuccessfullyMessage ??
+    APP_SAVED_SUCCESSFULLY_DEFAULT_MESSAGE;
 
   return (
     <div>

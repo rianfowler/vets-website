@@ -37,17 +37,14 @@ class SaveInProgressIntro extends React.Component {
       verifyRequiredPrefill,
       verifiedPrefillAlert,
       unverifiedPrefillAlert,
-      formConfig: {
-        customText: {
-          appType = APP_TYPE_DEFAULT,
-          appAction = APP_ACTION_DEFAULT,
-        } = {},
-      } = {},
+      formConfig,
     } = this.props;
     const { profile, login } = this.props.user;
     const prefillAvailable = !!(
       profile && profile.prefillsAvailable.includes(formId)
     );
+    const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
+    const appAction = formConfig?.customText?.appAction ?? APP_ACTION_DEFAULT;
 
     if (login.currentlyLoggedIn) {
       if (savedForm) {

@@ -83,14 +83,12 @@ class DowntimeNotification extends React.Component {
   };
 
   render() {
-    const {
-      formConfig: {
-        customText: { appType: appTypeContent = APP_TYPE_DEFAULT } = {},
-      } = {},
-    } = this.props;
+    const { formConfig } = this.props;
+
+    const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
 
     if (this.props.globalDowntime) {
-      return this.renderGlobalDowntimeOverride(appTypeContent);
+      return this.renderGlobalDowntimeOverride(appType);
     }
 
     if (!this.props.isReady) {

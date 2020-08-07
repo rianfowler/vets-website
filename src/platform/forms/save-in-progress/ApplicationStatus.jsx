@@ -65,15 +65,16 @@ export class ApplicationStatus extends React.Component {
       applyRender,
       formType,
       applyLink,
-      formConfig: {
-        customText: {
-          appType = APP_TYPE_DEFAULT,
-          continueAppButtonText = CONTINUE_APP_DEFAULT_MESSAGE,
-          startNewAppButtonText = START_NEW_APP_DEFAULT_MESSAGE,
-          appAction = APP_ACTION_DEFAULT,
-        } = {},
-      } = {},
+      formConfig,
     } = this.props;
+    const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
+    const continueAppButtonText =
+      formConfig?.customText?.continueAppButtonText ??
+      CONTINUE_APP_DEFAULT_MESSAGE;
+    const startNewAppButtonText =
+      formConfig?.customText?.startNewAppButtonText ??
+      START_NEW_APP_DEFAULT_MESSAGE;
+    const appAction = formConfig?.customText?.appAction ?? APP_ACTION_DEFAULT;
     let savedForm;
     let { formId } = this.props;
     let multipleForms = false;

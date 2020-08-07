@@ -154,14 +154,9 @@ class RoutedSavableApp extends React.Component {
   }
 
   onbeforeunload = e => {
-    const {
-      currentLocation,
-      autoSavedStatus,
-      formConfig: {
-        additionalRoutes = [],
-        customText: { appType = APP_TYPE_DEFAULT } = {},
-      },
-    } = this.props;
+    const { currentLocation, autoSavedStatus, formConfig } = this.props;
+    const additionalRoutes = formConfig?.additionalRoutes;
+    const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
     const trimmedPathname = currentLocation.pathname.replace(/\/$/, '');
     const additionalSafePaths = additionalRoutes.map(route => route.path);
     let message;
@@ -237,10 +232,10 @@ class RoutedSavableApp extends React.Component {
     const {
       currentLocation,
       formConfig = {},
-      formConfig: { customText: { appType = APP_TYPE_DEFAULT } = {} },
       children,
       loadedStatus,
     } = this.props;
+    const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
     const trimmedPathname = currentLocation.pathname.replace(/\/$/, '');
     let content;
     const loadingForm =

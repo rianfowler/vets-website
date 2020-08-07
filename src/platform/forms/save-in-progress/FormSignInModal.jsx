@@ -28,9 +28,8 @@ class FormSignInModal extends React.Component {
       action: this.handleSignIn,
       text: 'Sign in and start over',
     };
-    const {
-      formConfig: { customText: { appType = APP_TYPE_DEFAULT } = {} } = {},
-    } = this.props;
+    const { formConfig } = this.props;
+    const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
 
     return (
       <Modal

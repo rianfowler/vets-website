@@ -13,8 +13,9 @@ export default function SubmitButtons(props) {
     preSubmitSection,
     renderErrorMessage,
     submission,
-    formConfig: { customText: { appType = APP_TYPE_DEFAULT } = {} } = {},
+    formConfig,
   } = props;
+  const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
   let submitButton;
   let submitMessage;
   if (submission.status === false) {
