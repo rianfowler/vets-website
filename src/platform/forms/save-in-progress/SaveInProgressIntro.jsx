@@ -255,9 +255,8 @@ class SaveInProgressIntro extends React.Component {
   };
 
   render() {
-    const {
-      formConfig: { customText: { appType = APP_TYPE_DEFAULT } = {} } = {},
-    } = this.props;
+    const { formConfig } = this.props;
+    const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
     const { profile } = this.props.user;
     const startPage = this.getStartPage();
     const savedForm =
