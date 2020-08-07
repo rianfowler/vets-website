@@ -229,12 +229,7 @@ class RoutedSavableApp extends React.Component {
   };
 
   render() {
-    const {
-      currentLocation,
-      formConfig = {},
-      children,
-      loadedStatus,
-    } = this.props;
+    const { currentLocation, formConfig, children, loadedStatus } = this.props;
     const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
     const trimmedPathname = currentLocation.pathname.replace(/\/$/, '');
     let content;
