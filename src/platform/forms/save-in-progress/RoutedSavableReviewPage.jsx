@@ -154,19 +154,16 @@ class RoutedSavableReviewPage extends React.Component {
   render() {
     const {
       form,
-      formConfig = {},
-      formConfig: {
-        customText: {
-          finishAppLaterMessage = FINISH_APP_LATER_DEFAULT_MESSAGE,
-        } = {},
-      },
+      formConfig,
       formContext,
       location,
       pageList,
       path,
       user,
     } = this.props;
-
+    const finishAppLaterMessage =
+      formConfig?.customText?.finishAppLaterMessage ??
+      FINISH_APP_LATER_DEFAULT_MESSAGE;
     const downtimeDependencies = get('downtime.dependencies', formConfig) || [];
     return (
       <div>
