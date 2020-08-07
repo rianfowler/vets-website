@@ -50,11 +50,8 @@ class FormSaved extends React.Component {
     const expirationDate = moment
       .unix(this.props.expirationDate)
       .format('M/D/YYYY');
-    const {
-      route: {
-        formConfig: { customText: { appType = APP_TYPE_DEFAULT } = {} } = {},
-      } = {},
-    } = this.props;
+    const appType =
+      this.props.route.formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
 
     return (
       <div>
