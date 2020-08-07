@@ -2,7 +2,7 @@ import React from 'react';
 import CallVBACenter from '../../static-data/CallVBACenter';
 import { APP_TYPE_DEFAULT } from 'platform/forms-system/src/js/constants';
 
-function GetFormHelp(formConfig = {}) {
+function GetFormHelp(formConfig) {
   const appType = formConfig?.customText?.appType ?? APP_TYPE_DEFAULT;
   return (
     <div>
