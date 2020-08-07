@@ -69,7 +69,9 @@ import { getTypeOfCare } from '../utils/selectors';
 import {
   getOrganizationBySiteId,
   getIdOfRootOrganization,
+  getSiteIdFromOrganization,
 } from '../services/organization';
+import { getClinicId } from '../services/healthcare-service/transformers';
 
 const initialState = {
   pages: {},
@@ -591,6 +593,8 @@ export default function formReducer(state = initialState, action) {
           additionalInfoTitle,
           reasonSchema,
         );
+      } else {
+        delete formData.reasonForAppointment;
       }
 
       const { data, schema } = setupFormData(
@@ -650,12 +654,18 @@ export default function formReducer(state = initialState, action) {
           state.parentFacilities,
           state.data.vaParent,
         );
+
+        const org = state.parentFacilities.find(
+          parent => parent.id === state.data.vaParent,
+        );
+        const siteId = getSiteIdFromOrganization(org);
+
         state.pastAppointments.forEach(appt => {
           const apptTime = appt.startDate;
           const latestApptTime = pastAppointmentDateMap.get(appt.clinicId);
           if (
             // Remove parse function when converting the past appointment call to FHIR service
-            appt.facilityId === parseFakeFHIRId(rootOrgId) &&
+            appt.facilityId === siteId &&
             (!latestApptTime || latestApptTime > apptTime)
           ) {
             pastAppointmentDateMap.set(appt.clinicId, apptTime);
@@ -664,7 +674,7 @@ export default function formReducer(state = initialState, action) {
 
         clinics = clinics.filter(clinic =>
           // Get clinic portion of id
-          pastAppointmentDateMap.has(clinic.id?.split('_')[1]),
+          pastAppointmentDateMap.has(getClinicId(clinic)),
         );
       }
 
@@ -729,7 +739,14 @@ export default function formReducer(state = initialState, action) {
     }
     case FORM_PAGE_COMMUNITY_CARE_PREFS_OPEN_SUCCEEDED: {
       let formData = state.data;
-      let initialSchema = action.schema;
+      const typeOfCare = getTypeOfCare(formData);
+      let initialSchema = set(
+        'properties.hasCommunityCareProvider.title',
+        `Do you have a preferred VA-approved community care provider for this ${
+          typeOfCare.name
+        } appointment?`,
+        action.schema,
+      );
       const parentFacilities =
         action.parentFacilities || state.parentFacilities;
       if (state.ccEnabledSystems?.length === 1) {

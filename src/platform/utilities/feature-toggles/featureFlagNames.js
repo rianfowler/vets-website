@@ -1,8 +1,9 @@
 export default Object.freeze({
   preEntryCovid19Screener: 'preEntryCovid19Screener',
   dashboardShowCovid19Alert: 'dashboardShowCovid19Alert',
-  facilityLocatorShowCommunityCares: 'facilityLocatorShowCommunityCares',
+  facilityLocatorShowCommunityCares: 'facilityLocatorShowCommunityCares', // Facilities team has deprecated this flag for the frontEnd logic, there is still backend support though.
   facilitiesPpmsSuppressPharmacies: 'facilitiesPpmsSuppressPharmacies',
+  facilitiesPpmsSuppressCommunityCare: 'facilitiesPpmsSuppressCommunityCare',
   facilityLocatorFeUseV1: 'facilityLocatorFeUseV1',
   profileShowProfile2: 'profile_show_profile_2.0',
   vaOnlineScheduling: 'vaOnlineScheduling',
@@ -36,4 +37,12 @@ export default Object.freeze({
   gibctFilterEnhancement: 'gibctFilterEnhancement',
   debtLettersShowLetters: 'debtLettersShowLetters',
   gibctCh33BenefitRateUpdate: 'gibctCh33BenefitRateUpdate',
+  form526BDD: 'form526BenefitsDeliveryAtDischarge',
+  showEduBenefits5495Wizard: 'showEduBenefits5495Wizard',
+  showEduBenefits1995Wizard: 'showEduBenefits1995Wizard',
+  showEduBenefits1990NWizard: 'showEduBenefits1990NWizard',
+  showEduBenefits0994Wizard: 'showEduBenefits0994Wizard',
+  showEduBenefits5490Wizard: 'showEduBenefits5490Wizard',
+  showEduBenefits1990Wizard: 'showEduBenefits1990Wizard',
+  showEduBenefits1990EWizard: 'showEduBenefits1990EWizard',
 });
